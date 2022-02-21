@@ -14,3 +14,5 @@ Imports:
     htmltools,
     reactR,
     shiny
+URL: https://github.com/zac-garland/reactstrap
+BugReports: https://github.com/zac-garland/reactstrap/issues
