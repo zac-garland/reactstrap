@@ -3,12 +3,6 @@ library(argonR)
 library(htmltools)
 library(magrittr)
 
-if(!dir.exists("inst/argon")){
-  dir.create("inst/argon")
-  argonInstall(path = "inst/argon")
-}
-
-
 tabText1 <- "Raw denim you probably haven't heard of them jean shorts Austin.
             Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache
 cliche tempor, williamsburg carles vegan helvetica. Reprehenderit
@@ -31,7 +25,7 @@ example <- argonPage(
   description = "HTML Static Template",
   navbar = argonNavbar(
     id = "main-navbar",
-    src = "https://demos.creative-tim.com/argon-design-system/assets/img/brand/white.png",
+    src = "https://picsum.photos/600/600?random=1",
     # left menu
     argonNavMenu(
       argonDropdown(
@@ -63,25 +57,25 @@ example <- argonPage(
       argonNavItem(
         name = "facebook",
         src = "https://www.facebook.com",
-        icon = icon("facebook-square"),
+        icon = argonIcon("facebook-square"),
         tooltip = "Like us on Facebook"
       ),
       argonNavItem(
         name = "instagram",
         src = "https://www.instagram.com",
-        icon = icon("instagram"),
+        icon = argonIcon("instagram"),
         tooltip = "Follow us on Instagram"
       ),
       argonNavItem(
         name = "twitter",
         src = "https://www.twitter.com",
-        icon = icon("twitter-square"),
+        icon = argonIcon("twitter-square"),
         tooltip = "Follow us on Twitter"
       ),
       argonNavItem(
         name = "github",
         src = "https://www.github.com",
-        icon = icon("github"),
+        icon = argonIcon("github"),
         tooltip = "Star us on Github"
       )
     )
@@ -118,11 +112,11 @@ example <- argonPage(
             width = 12,
             id = "carousel2",
             argonCarouselItem(
-              src = "https://demos.creative-tim.com/argon-design-system/assets/img/theme/img-1-1200x1000.jpg",
+              src = "https://picsum.photos/600/600?random=2",
               active = TRUE
             ),
             argonCarouselItem(
-              src = "https://demos.creative-tim.com/argon-design-system/assets/img/theme/img-2-1200x1000.jpg",
+              src = "https://picsum.photos/600/600?random=3",
               active = FALSE
             )
           ) %>% argonPersp(side = "right")
@@ -400,7 +394,7 @@ example <- argonPage(
           ),
           argonImage(
             floating = TRUE,
-            src = "https://demos.creative-tim.com/argon-design-system/assets/img/ill/ill-2.svg",
+            src = "https://picsum.photos/600/600?random=4",
             hover_lift = TRUE
           ) %>% argonTooltip(position = "right", title = "I am a nice floating image")
             %>% argonBlur(text = "Hi There!", text_color = "white")
@@ -439,7 +433,7 @@ example <- argonPage(
         argonUser(
           title = "Ryan Tompson",
           subtitle = "Web Developer",
-          src = "https://demos.creative-tim.com/argon-design-system/assets/img/theme/team-1-800x800.jpg"
+          src = "https://picsum.photos/600/600?random=5"
         ) %>% argonBlur(text = "Ryan Tompson", text_color = "default")
       ),
       argonColumn(
@@ -447,7 +441,7 @@ example <- argonPage(
         argonUser(
           title = "Romina Hadid",
           subtitle = "Marketing Strategist",
-          src = "https://demos.creative-tim.com/argon-design-system/assets/img/theme/team-2-800x800.jpg"
+          src = "https://picsum.photos/600/600?random=6"
         ) %>% argonBlur(text = "Romina Hadid", text_color = "default")
       ),
       argonColumn(
@@ -455,7 +449,7 @@ example <- argonPage(
         argonUser(
           title = "Alexander Smith",
           subtitle = "UI/UX Designer",
-          src = "https://demos.creative-tim.com/argon-design-system/assets/img/theme/team-3-800x800.jpg"
+          src = "https://picsum.photos/600/600?random=7"
         ) %>% argonBlur(text = "Alexander Smith", text_color = "default")
       ),
       argonColumn(
@@ -463,7 +457,7 @@ example <- argonPage(
         argonUser(
           title = "John Doe",
           subtitle = "Founder and CEO",
-          src = "https://demos.creative-tim.com/argon-design-system/assets/img/theme/team-4-800x800.jpg"
+          src = "https://picsum.photos/600/600?random=8"
         ) %>% argonBlur(text = "John Doe", text_color = "default")
       )
     )
@@ -526,4 +520,17 @@ example <- argonPage(
   )
 )
 
-argonPageTemplate(filename = "example", path = "inst/argon", example)
+if(interactive()){
+  # create dir
+  dir_path = "inst/argon"
+
+  if(!dir.exists(dir_path)){
+    dir.create(dir_path)
+    argonInstall(path = dir_path)
+  }
+
+  argonPageTemplate(filename = "example", path = dir_path, example)
+
+}
+
+
